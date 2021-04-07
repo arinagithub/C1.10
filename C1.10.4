@@ -1,0 +1,25 @@
+class Client:
+    def __init__(self, name):
+        self.name = name
+
+    def get_name(self):
+        return self.name
+
+
+class Guest(Client):
+    def __init__(self, name, city, status):
+        super().__init__(name)
+        self.city = city
+        self.status = status
+
+    def __str__(self):
+        return f'«{self.name}, г. {self.city}, статус "{self.status}"»'
+
+
+if __name__ == '__main__':
+    db = [{'name': 'Иван Петров', 'city': 'Москва', 'status': 'Наставник'},
+          {'name': 'Петр Иванов', 'city': 'Москва', 'status': 'Случайный гость'}]
+
+    clients = [Guest(**item) for item in db]
+    for client in clients:
+        print(client)
